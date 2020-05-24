@@ -1,0 +1,10 @@
+.input {
+    color: white;
+    margin: 10px auto;
+    border: none;
+    background-color: limegreen;
+    padding: 20px;
+    font: 'times';
+    text-align: center;
+    font-size: 15pt;
+}

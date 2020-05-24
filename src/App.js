@@ -1,20 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import UserInput from './UserInput/UserInput'
+import UserOutput from './UserOutput/UserOutput'
 
 class App extends Component {
+  state = {
+    usernames: [
+      { username: 'John'},
+      { username: 'Sarah'}
+    ]
+  }
+
+  userNameChangerHandler = (event) => {
+    this.setState({
+      usernames: [
+        { username: 'John'},
+        { username: event.target.value}
+    ]})
+  }
+
   render() {
+    const style = {
+      padding: '8px',
+      textAlign: 'center',
+      fontSize: '20pt'
+    }
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div style={style}>
+        <UserOutput
+          username={this.state.usernames[0].username}
+        />
+        <UserOutput
+          username={this.state.usernames[1].username}
+          changed={this.userNameChangerHandler}
+        />
+        <UserInput
+          username={this.state.usernames[1].username}
+          changed={this.userNameChangerHandler}
+        />
       </div>
-    );
+    )
   }
 }
 
